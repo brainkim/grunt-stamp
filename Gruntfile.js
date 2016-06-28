@@ -52,12 +52,12 @@ module.exports = function(grunt) {
   });
 
   grunt.loadTasks('tasks');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Run stamp twice to make sure it's idempotent
-  grunt.registerTask('test', ['clean', 'copy', 'stamp', 'stamp', 'nodeunit']);
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('test', ['jshint', 'clean', 'copy', 'stamp', 'nodeunit']);
+  grunt.registerTask('default', ['test']);
 };
