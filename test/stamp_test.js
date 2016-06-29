@@ -1,7 +1,5 @@
 'use strict';
 
-var grunt = require('grunt');
-
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
@@ -21,10 +19,8 @@ var grunt = require('grunt');
     test.doesNotThrow(block, [error], [message])
     test.ifError(value)
 */
-function log(str) {
-  console.log(str);
-  return str;
-}
+
+var grunt = require('grunt');
 
 exports.stamp = {
   testdir: function(test) {
