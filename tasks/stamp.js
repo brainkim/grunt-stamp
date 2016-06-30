@@ -32,10 +32,11 @@ module.exports = function(grunt) {
     this.filesSrc.forEach(function(filepath) {
       if (grunt.file.isFile(filepath)) {
         var file = grunt.file.read(filepath);
-        // Remove <EOL>
-        file = file[file.length - 1] === grunt.util.linefeed ?
-          file.slice(0, file.length - 1) :
-          file;
+        var re = /\r?\n$/;
+        // Remove EOL
+        if (re.test(file[file.length - 1])) {
+          file = file.replace(re, '');
+        }
 
         var banner, footer;
         if (options.banner && checkBanner(file, options.banner)) {
