@@ -21,8 +21,7 @@ function checkFooter(file, footer) {
 }
 
 module.exports = function(grunt) {
-  grunt.registerMultiTask('stamp', 'Add a banner or footer to files',
-                          function() {
+  grunt.registerMultiTask('stamp', 'Add a banner or footer to files', function() {
 
     var options = this.options({
       banner: '',
@@ -31,14 +30,16 @@ module.exports = function(grunt) {
 
     this.filesSrc.forEach(function(filepath) {
       if (grunt.file.isFile(filepath)) {
+        var banner;
+        var footer;
         var file = grunt.file.read(filepath);
+
         var re = /\r?\n$/;
         // Remove EOL
         if (re.test(file[file.length - 1])) {
           file = file.replace(re, '');
         }
 
-        var banner, footer;
         if (options.banner && checkBanner(file, options.banner)) {
           banner = options.banner;
         }
